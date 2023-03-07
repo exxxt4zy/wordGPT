@@ -20,7 +20,7 @@ Sub AddToShortcut()
         .Style = msoButtonIconAndCaption
     End With
     With
-    MsgBox "Готово! Теперь вы можете использовать"
+    MsgBox "Готово"
 End Sub
 
 
@@ -42,7 +42,7 @@ Private Sub Ask()
     Dim json As String
     
     Dim text As String
-    MsgBox "Ждите, запрос выполняется"
+    MsgBox "Ждите, Word может подвиснуть ненадолго"
     text = selectedText
 
     json = "{""message"": """ & text & """}"
