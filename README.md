@@ -5,7 +5,7 @@ WordGPT - это скрипт, который работает с искусст
 ---
 1. Зайдите в Word и выберите **Макросы**
 
-![image](https://user-images.githubusercontent.com/78819104/223403107-16ad309b-41c2-4cad-aef7-c8faf8800af8.png)
+![image](https://user-images.githubusercontent.com/78819104/223409119-add85188-419a-467e-a1f3-bde8629f6609.png)
 
 2. Создайте макрос с именем **AddToShortcut** и нажмите **Изменить**
 
