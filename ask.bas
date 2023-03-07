@@ -3,7 +3,7 @@ Option Explicit
 Sub DeleteShortcut()
     Dim DeleteControl As CommandBarControl
     For Each DeleteControl In Application.CommandBars("Text").Controls
-       If DeleteControl.Caption = "Спросить ChatGPT" Then
+       If DeleteControl.Caption = "Ask ChatGPT" Then
           DeleteControl.Delete
        End If
     Next DeleteControl
@@ -15,12 +15,10 @@ Sub AddToShortcut()
     Set Bar = Application.CommandBars("Text")
     Set NewControl = Bar.Controls.Add(Type:=msoControlButton, ID:=1, Temporary:=False)
     With NewControl
-        .Caption = "Спросить ChatGPT"
-        .OnAction = "Спросить"
+        .Caption = "Ask ChatGPT"
+        .OnAction = "Ask"
         .Style = msoButtonIconAndCaption
     End With
-    With
-    MsgBox "Готово"
 End Sub
 
 
@@ -42,7 +40,6 @@ Private Sub Ask()
     Dim json As String
     
     Dim text As String
-    MsgBox "Ждите, Word может подвиснуть ненадолго"
     text = selectedText
 
     json = "{""message"": """ & text & """}"
@@ -50,22 +47,3 @@ Private Sub Ask()
     req.Send json
     
     req.WaitForResponse
-    
-    Dim objHTML, objWin As Object
-    Set objHTML = CreateObject("HTMLFile")
-    Set objWin = objHTML.parentWindow
-    objWin.execScript "var data = " & req.ResponseText & ";", "JScript"
-    objWin.execScript "var response_msg = data.choices[0].message.content;", "JScript"
-
-    Dim result As String
-    result = objWin.response_msg
-    
-    selection.Range.InsertAfter Chr(10) & result & Chr(10)
-    
-End Sub
-
-
-Private Sub document_open()
-    'adds the right-click shortcut when the document opens
-    Call AddToShortcut
-End Sub
