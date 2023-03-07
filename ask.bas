@@ -35,7 +35,7 @@ Private Sub Ask()
     
     Dim req As Object
     Set req = CreateObject("WinHttp.WinHttpRequest.5.1")
-    req.Open "POST", "https://openaiapi.qquade.repl.co/chat", False
+    req.Open "POST", "https://chatgpt.qquade.repl.co/chat", False
     req.SetRequestHeader "Content-Type", "application/json"
     
     Dim f
